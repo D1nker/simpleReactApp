@@ -4,7 +4,6 @@ const Footer = () => {
   return (
     <div className="App-footer">
       <footer>
-        <div className="mention">Made by d1nker with love</div>
         <nav>
           <ul>
             <li><a href="github">Github</a></li>
@@ -12,6 +11,7 @@ const Footer = () => {
             <li><a href="idkyet">idkyet</a></li>
           </ul>
         </nav>
+        <div className="mention">Made by d1nker with love</div>
       </footer>
     </div>
   )
