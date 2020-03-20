@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+}
+
+/** App **/
+
+.App {
+  text-align: center;
+}
+
+/** --------------------------------------------- **/
+
+/** App-logo **/
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/** --------------------------------------------- **/
+
+/** App-header **/
+
+.App-header {
+  background-color: #282c34;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-header nav {
+  height: 100px;
+  color: whitesmoke;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-header li {
+  list-style: none;
+  display: inline;
+  padding: 2vh;
+}
+
+.App-header a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: white;
+}
+
+/** --------------------------------------------- **/
+
+/** App-link **/
+
+.App-link {
+  color: #61dafb;
+}
+
+/** --------------------------------------------- **/
+
+/** App-mainContent **/
+
+.App-mainContent {
+  background-color: whitesmoke;
+  color: #282c34;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+/** --------------------------------------------- **/
+
+
+/** App-todoList **/
+
+.App-todoList {
+  background-color: #282c34;
+  color: whitesmoke;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  margin: auto;
+}
+
+.App-todoList h1 {
+  margin-bottom: 2vh;
+}
+/** --------------------------------------------- **/
+
+
+/** App-todoItem **/
+
+.App-todoItem {
+  line-height: 40px;
+  margin-top: 5vh;
+  height: auto;
+  width: 50vh;
+  align-items: center;
+  padding: 30px 20px 0;
+  font-family: Roboto, sans-serif;
+  font-weight: 100;
+  font-size: 15px;
+  color: #333333;
+}
+
+/** --------------------------------------------- **/
+
+/** App-footer **/
+
+.App-footer {
+  padding-top: 1vh;
+}
+
+.mention {
+  padding-bottom: 2vh;
+}
+
+.App-footer li {
+  list-style: none;
+  display: inline;
+  padding: 2vh;
+}
+
+/** --------------------------------------------- **/
+
+/* input[type=checkbox] {
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+input[type=checkbox]:focus {
+  outline: 0;
+} */
