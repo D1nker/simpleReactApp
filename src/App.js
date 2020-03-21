@@ -1,26 +1,40 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import './assets/css/App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/static/Header';
+import Footer from './components/static/Footer';
 import MainContent from './components/MainContent';
-import Todos from './components/Todos';
-import Card from './components/Card';
+import Todos from './components/todo/Todos';
+import Card from './components/product/ProductCard';
+import Products from './components/product/Products';
 
 const App = () => {
+  // Déclaration d'une nouvelle variable d'état, "products" ++ son setter
+  const [products, setProducts] = useState([]);
+  // Similaire à componentDidMount et componentDidUpdate :
+  useEffect(() => {
+    fetch('http://localhost:3001/products')
+      .then(res => res.json())
+      .then(result => setProducts(result))
+    ;
+  }, []); // second parameter to encure that useEffect is running once
 
-  const contact = {
-    name: "d1nker",
-    imgUrl: "http://placekitten.com/300/200",
-    phone: "(212) 1337-1337",
-    email: "d1nker@d1nker.com",
-  };
+  const productsComponent = products.map(product => {
+    return (
+      <Card
+        key={product.id}
+        name={product.name}
+        description={product.description}
+        price={product.price}
+      />
+    )
+  })
 
   return (
     <div className="App">
       <Header />
       <MainContent />
       <Todos />
-      <Card contact={contact} />
+      <Products>{productsComponent}</Products>
       <Footer />
     </div>
   );

@@ -1,0 +1,69 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "d1nker"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "hi there",
+      "postId": 1
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Ipad Pro 2020",
+      "price": 1299,
+      "description": "New Ipad Pro 2020."
+    },
+    {
+      "id": "2",
+      "name": "Macbook Pro 13'",
+      "price": 1600,
+      "description": "New MacBook 13' 2020 with new retina display."
+    },
+    {
+      "id": "3",
+      "name": "Imac 27",
+      "price": 2200,
+      "description": "Don't have a computer? No problem!"
+    },
+    {
+      "id": "4",
+      "name": "Iphone 11 124Go",
+      "price": 899,
+      "description": "Wake up!"
+    },
+    {
+      "id": "5",
+      "name": "Magic Keyboard 2020",
+      "price": 250,
+      "description": "New apple Magic Keyboard"
+    },
+    {
+      "id": "6",
+      "name": "Magic Mouse 2020",
+      "price": 150,
+      "description": "To help you solve your hardest coding problems."
+    },
+    {
+      "id": "7",
+      "name": "Fidget Spinner",
+      "price": 5.99,
+      "description": "Always a good time to relax."
+    },
+    {
+      "id": "8",
+      "name": "Sticker Set",
+      "price": 14.99,
+      "description": "To prove to other devs you know a lot && it's beautiful :D."
+    }
+  ],
+  "profile": {
+    "name": "d1nker"
+  }
+}

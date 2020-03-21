@@ -1,7 +1,7 @@
 import React from 'react';
-import '../assets/css/App.css';
-import TodoItem from './Todo/TodoItem';
-import TodoList from './Todo/TodoList';
+import '../../assets/css/App.css';
+import TodoItem from './TodoItem';
+import TodoList from './TodoList';
 
 const Todos = () => {
   return (
