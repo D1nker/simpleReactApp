@@ -11,7 +11,7 @@ const MainContent = () => {
   });
 
   return (
-    <div className="App-mainContent">
+    <div className="App-main-content">
       <main>
         <p>You clicked {count} times</p>
         <Button

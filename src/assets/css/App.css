@@ -78,9 +78,9 @@ body {
 
 /** --------------------------------------------- **/
 
-/** App-mainContent **/
+/** App-main-content **/
 
-.App-mainContent {
+.App-main-content {
   background-color: whitesmoke;
   color: #282c34;
   min-height: 50vh;
@@ -125,6 +125,24 @@ body {
   padding: 30px 20px 0;
   font-size: 18px;
   color: #333333;
+}
+
+/** --------------------------------------------- **/
+
+/** App-products **/
+
+.App-products {
+  display: flex;
+  padding:2em;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: inherit;
+}
+
+.card-text--custom {
+  min-height: 100px;
 }
 
 /** --------------------------------------------- **/

@@ -1,13 +1,12 @@
 import React from 'react';
 import '../../assets/css/App.css';
-import TodoItem from './TodoItem';
 import TodoList from './TodoList';
 
-const Todos = () => {
+const Todos = (props) => {
   return (
     <div className="App-todos">
       <TodoList>
-        <TodoItem />
+      {props.children}
       </TodoList>
     </div>
   );

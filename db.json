@@ -61,6 +61,45 @@
       "name": "Sticker Set",
       "price": 14.99,
       "description": "To prove to other devs you know a lot && it's beautiful :D."
+    },
+    {
+      "id": "9",
+      "name": "Good pair of glasses",
+      "price": 155.99,
+      "description": "To protect your eyes ofc"
+    },
+    {
+      "id": "10",
+      "name": "Headphones",
+      "price": 200,
+      "description": "Always importants to have to good music gear :)."
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "name": "Learn React Basics",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "name": "Finish React MOOC",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "name": "React Hooks",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "name": "React Router",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "name": "Learn Redux",
+      "completed": false
     }
   ],
   "profile": {
