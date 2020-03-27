@@ -15,12 +15,12 @@ const MainContent = ({ initialCount = 0 }) => {
     document.title = `Vous avez cliqué ${count} fois`;
   });
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-        setCount(prevCount => prevCount + 1)
-    }, 1000)
-    return () => clearInterval(intervalId)
-  }, [])
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //       setCount(prevCount => prevCount + 1)
+  //   }, 1000)
+  //   return () => clearInterval(intervalId)
+  // }, [])
 
   const prevCount = prevCountRef.current;
   console.log(prevCount);
