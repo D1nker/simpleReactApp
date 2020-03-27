@@ -7,6 +7,8 @@ import Todos from './components/todo/Todos';
 import Card from './components/product/ProductCard';
 import Products from './components/product/Products';
 import TodoItem from './components/todo/TodoItem';
+// import Test from './components/Test';
+// import ShittyForm from './components/ShittyFrom';
 
 const App = () => {
   // Déclaration d'une nouvelle variable d'état, "products" ++ son setter
@@ -22,11 +24,16 @@ const App = () => {
     .then(result => setter(result))
   ;
 
+  // on peut avoir autant de useEffect qu'on veut
   useEffect(() => {
     fetchResource(productsUrl, setProducts);
     fetchResource(todosUrl, setTodos);
-  }, []); // second parameter to encure that useEffect is running once
+  }, []); // second empty array parameter to encure that useEffect is running once
+          // insert var you wanna "watch" here and make DOM updates
 
+  function discover() {
+    console.log('falut');
+  }
   const productsComponent = products.map(product => {
     return (
       <Card
@@ -34,6 +41,7 @@ const App = () => {
         name={product.name}
         description={product.description}
         price={product.price}
+        discover={discover}
       />
     )
   })
@@ -54,6 +62,10 @@ const App = () => {
       <MainContent />
       <Todos>{todoItemsComponent}</Todos>
       <Products>{productsComponent}</Products>
+      {
+        // <Test />
+        // <ShittyForm />
+      }
       <Footer />
     </div>
   );

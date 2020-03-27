@@ -8,7 +8,7 @@ const ProductCard = (props) => {
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>Price: {props.price.toLocaleString("fr-FR", { style: "currency", currency: "EUR" })}</Card.Text>
         <Card.Text className="card-text--custom">Description: {props.description}</Card.Text>
-      <Button variant="primary">Buy it</Button>
+      <Button variant="primary" onClick={props.discover}>Buy it</Button>
       </Card.Body>
     </Card>
   )

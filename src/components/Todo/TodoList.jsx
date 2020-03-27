@@ -4,20 +4,41 @@ import { Button, Form, FormControl, InputGroup, ListGroup } from 'react-bootstra
 
 const TodoList = (props) => {
   // Déclaration d'une nouvelle variable d'état, que l'on appellera “count”
-  const [todo, setTodo] = useState(0);
+  const [todo, setTodo] = useState('Todo 1');
   // Similaire à componentDidMount et componentDidUpdate :
   useEffect(() => {
     document.title = `Vous avez cliqué ${todo} fois`;
   });
+
+  // handleChange(event) {
+  //   this.setState({
+  //       [event.target.name]: event.target.value
+  //   })
+  // OR
+  // handleChange(event) {
+  // const {name, value} = event.target;
+  // [name]: value
+  // }
+  // check React SyntheticEvent
+
+  const handleChange = (event) => {
+    const { value } = event.target;
+    setTodo(value);
+  }
+  console.log(todo);
 
   return (
     <div className="App-todoList">
       <h1>You have {props.children.length} to do today</h1>
       <Form inline>
         <InputGroup>
-          <FormControl aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
+          <FormControl
+            name="todo"
+            value={todo}
+            onChange={handleChange}
+          />
         </InputGroup>
-        <Button bsstyle="primary" type="submit" onClick={setTodo}>Add</Button>
+        <Button bsstyle="primary" type="submit" onClick={() => setTodo}>Add</Button>
       </Form>
       <div className="App-todoItem">
         <ListGroup as="ul">
