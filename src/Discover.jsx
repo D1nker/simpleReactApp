@@ -6,6 +6,7 @@ import Todos from './components/todo/Todos';
 import Card from './components/product/ProductCard';
 import Products from './components/product/Products';
 import TodoItem from './components/todo/TodoItem';
+import MainContent from './components/MainContent';
 // import Test from './components/Test';
 // import ShittyForm from './components/ShittyFrom';
 
@@ -58,6 +59,7 @@ const Discover = () => {
   return (
     <div className="Discover">
       <Header />
+      <MainContent />
       <Todos>{todoItemsComponent}</Todos>
       <Products>{productsComponent}</Products>
       <Footer />

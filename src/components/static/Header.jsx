@@ -7,10 +7,10 @@ const Header = () => {
     <div className="App-header">
       <nav>
         <ul>
-        <Link to="/">Home</Link>
-        <Link to="/discover">Discover</Link>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/discover">Discover</Link></li>
         </ul>
-    </nav>
+      </nav>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

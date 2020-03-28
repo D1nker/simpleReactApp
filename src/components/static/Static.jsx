@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 import '../../assets/css/App.css';
 import Header from './Header';
 import Footer from './Footer';
-import MainContent from '../MainContent'
+import Home from './Home';
 
 const Static = () => {
   return (
     <Fragment>
       <Header />
-      <MainContent />
+      <Home />
       <Footer />
     </Fragment>
   );
