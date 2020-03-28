@@ -1,74 +1,23 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import './assets/css/App.css';
-import Header from './components/static/Header';
-import Footer from './components/static/Footer';
-import MainContent from './components/MainContent';
-import Todos from './components/todo/Todos';
-import Card from './components/product/ProductCard';
-import Products from './components/product/Products';
-import TodoItem from './components/todo/TodoItem';
-// import Test from './components/Test';
-// import ShittyForm from './components/ShittyFrom';
+import { Route, Switch } from 'react-router-dom'
+import Discover from './Discover';
+import Static from './components/static/Static'
 
 const App = () => {
-  // Déclaration d'une nouvelle variable d'état, "products" ++ son setter
-  const [products, setProducts] = useState([]);
-  // Similaire à componentDidMount et componentDidUpdate :
-  const [todos, setTodos] = useState([]);
-
-  const productsUrl = 'http://localhost:3001/products';
-  const todosUrl = 'http://localhost:3001/todos';
-
-  const fetchResource = (url, setter) => fetch(url)
-    .then(res => res.json())
-    .then(result => setter(result))
-  ;
-
-  // on peut avoir autant de useEffect qu'on veut
-  useEffect(() => {
-    fetchResource(productsUrl, setProducts);
-    fetchResource(todosUrl, setTodos);
-  }, []); // second empty array parameter to encure that useEffect is running once
-          // insert var you wanna "watch" here and make DOM updates
-
-  function discover() {
-    console.log('falut');
-  }
-  const productsComponent = products.map(product => {
-    return (
-      <Card
-        key={product.id}
-        name={product.name}
-        description={product.description}
-        price={product.price}
-        discover={discover}
-      />
-    )
-  })
-
-  const todoItemsComponent = todos.map(todo => {
-    return (
-      <TodoItem
-        key={todo.id}
-        name={todo.name}
-        completed={todo.completed}
-      />
-    )
-  })
-
   return (
     <div className="App">
-      <Header />
-      <MainContent />
-      <Todos>{todoItemsComponent}</Todos>
-      <Products>{productsComponent}</Products>
-      {
-        // <Test />
-        // <ShittyForm />
-      }
-      <Footer />
+      <Switch>
+        <Route exact path="/" component={Static} />
+        <Route path="/discover" component={Discover} />
+      </Switch>
     </div>
   );
 }
+// take care about `exact`Route attribute that may cause some issue(s)
+// learn more about it here = () => {
+// https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path
+// https://reacttraining.com/react-router/web/api/Route/exact-bool
+// }
 
 export default App;
