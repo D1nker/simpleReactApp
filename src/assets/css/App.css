@@ -97,7 +97,7 @@ body {
 /** App-todoList **/
 
 .App-todoList {
-  background-color: #282c34;
+  background-color: white;
   color: whitesmoke;
   min-height: 50vh;
   display: flex;
@@ -150,6 +150,8 @@ body {
 /** App-footer **/
 
 .App-footer {
+  color: white;
+  background-color: #282c34;;
   padding-top: 1vh;
 }
 
@@ -164,3 +166,48 @@ body {
 }
 
 /** --------------------------------------------- **/
+
+
+.App-discover {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 1.5;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: #282c34;
+  }
+
+  .social {
+    list-style: none;
+    text-align: center;
+    margin: 96px;
+  }
+  .social_item {
+    display: inline-block;
+    margin: 0 12px;
+  }
+  .social_link {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    text-align: center;
+    transition: 0.5s;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .social_link:hover {
+    -webkit-transform: translateY(-3px);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  .social_link:active {
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+

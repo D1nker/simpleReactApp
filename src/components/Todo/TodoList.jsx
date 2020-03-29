@@ -29,7 +29,7 @@ const TodoList = (props) => {
 
   return (
     <div className="App-todoList">
-      <h1>You have {props.children.length} to do today</h1>
+      {/* <h1>You have {props.children.length} to do today</h1> */}
       <Form inline>
         <InputGroup>
           <FormControl

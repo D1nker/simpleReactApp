@@ -2,15 +2,25 @@ import React from 'react';
 import './assets/css/App.css';
 import { Route, Switch } from 'react-router-dom'
 import Discover from './Discover';
-import Static from './components/static/Static'
+import Header from './components/static/Header';
+import Footer from './components/static/Footer';
+import Home from './components/static/Home';
+import MainContent from './components/MainContent';
+import Products from './components/product/Products';
+import Todos from './components/todo/Todos';
 
 const App = () => {
   return (
     <div className="App">
+      <Header />
       <Switch>
-        <Route exact path="/" component={Static} />
-        <Route path="/discover" component={Discover} />
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/discover" component={Discover} />
+        <Route path="/discover/count" component={MainContent} />
+        <Route path="/discover/todos" component={Todos} />
+        <Route path="/discover/products" component={Products} />
       </Switch>
+      <Footer />
     </div>
   );
 }

@@ -1,69 +1,33 @@
-import React, {useState, useEffect } from 'react';
+import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom'
 import './assets/css/App.css';
-import Header from './components/static/Header';
-import Footer from './components/static/Footer';
-import Todos from './components/todo/Todos';
-import Card from './components/product/ProductCard';
-import Products from './components/product/Products';
-import TodoItem from './components/todo/TodoItem';
-import MainContent from './components/MainContent';
+import { FaProductHunt, FaTasks, FaReact } from 'react-icons/fa';
 // import Test from './components/Test';
 // import ShittyForm from './components/ShittyFrom';
 
 const Discover = () => {
-  // Déclaration d'une nouvelle variable d'état, "products" ++ son setter
-  const [products, setProducts] = useState([]);
-  // Similaire à componentDidMount et componentDidUpdate :
-  const [todos, setTodos] = useState([]);
-
-  const productsUrl = 'http://localhost:3001/products';
-  const todosUrl = 'http://localhost:3001/todos';
-
-  const fetchResource = (url, setter) => fetch(url)
-    .then(res => res.json())
-    .then(result => setter(result))
-  ;
-
-  // on peut avoir autant de useEffect qu'on veut
-  useEffect(() => {
-    fetchResource(productsUrl, setProducts);
-    fetchResource(todosUrl, setTodos);
-  }, []); // second empty array parameter to encure that useEffect is running once
-          // insert var you wanna "watch" here and make DOM updates
-
-  function discover() {
-    console.log('falut');
-  }
-  const productsComponent = products.map(product => {
-    return (
-      <Card
-        key={product.id}
-        name={product.name}
-        description={product.description}
-        price={product.price}
-        discover={discover}
-      />
-    )
-  })
-
-  const todoItemsComponent = todos.map(todo => {
-    return (
-      <TodoItem
-        key={todo.id}
-        name={todo.name}
-        completed={todo.completed}
-      />
-    )
-  })
-
   return (
-    <div className="Discover">
-      <Header />
-      <MainContent />
-      <Todos>{todoItemsComponent}</Todos>
-      <Products>{productsComponent}</Products>
-      <Footer />
-    </div>
+    <Fragment>
+      <div className="App-discover">
+        <ul className="social">
+          <li className="social_item">
+            <Link className="social_link" to="/discover/count" style={{ 'color': 'white' }}>
+              <FaReact size="3em"/>
+            </Link>
+          </li>
+          <li className="social_item">
+            <Link className="social_link" to="/discover/todos" style={{ 'color': 'white' }}>
+              <FaTasks size="3em"/>
+            </Link>
+          </li>
+          <li className="social_item">
+            <Link className="social_link" to="/discover/products" style={{ 'color': 'white' }}>
+              <FaProductHunt size="3em"/>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </Fragment>
   );
 }
 

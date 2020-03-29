@@ -55,8 +55,6 @@ const MainContent = ({ initialCount = 0 }) => {
             Reset
           </Button>
         </div>
-
-
       </main>
     </div>
   );
