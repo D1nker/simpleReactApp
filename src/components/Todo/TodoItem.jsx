@@ -1,11 +1,16 @@
 import React from 'react';
 import '../../assets/css/App.css';
-import { ListGroup } from 'react-bootstrap';
+import { FormControl, InputGroup } from 'react-bootstrap';
 
 const TodoItem = (props) => {
   return (
     <React.Fragment>
-      <ListGroup.Item as="li" variant={props.completed ? "success" : "warning"}>{props.name}</ListGroup.Item>
+      <InputGroup className="mb-3">
+        <InputGroup.Prepend>
+          <InputGroup.Checkbox aria-label="Checkbox for following text input" checked={props.completed} onChange={() => props.handleCheckboxChange(props.id)} />
+        </InputGroup.Prepend>
+        <FormControl value={props.name} onChange={() => { }}/>
+      </InputGroup>
     </React.Fragment>
   );
 }

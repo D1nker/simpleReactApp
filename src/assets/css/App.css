@@ -94,9 +94,9 @@ body {
 /** --------------------------------------------- **/
 
 
-/** App-todoList **/
+/** App-todos **/
 
-.App-todoList {
+.App-todos {
   background-color: white;
   color: whitesmoke;
   min-height: 50vh;
@@ -108,7 +108,7 @@ body {
   margin: auto;
 }
 
-.App-todoList h1 {
+.App-todos h1 {
   margin-bottom: 2vh;
 }
 /** --------------------------------------------- **/
@@ -118,7 +118,6 @@ body {
 
 .App-todoItem {
   line-height: 40px;
-  margin-top: 5vh;
   height: auto;
   width: 50vh;
   align-items: center;
@@ -151,7 +150,7 @@ body {
 
 .App-footer {
   color: white;
-  background-color: #282c34;;
+  background-color: #282c34;
   padding-top: 1vh;
 }
 
@@ -209,5 +208,3 @@ body {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
-
-

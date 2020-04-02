@@ -39,6 +39,7 @@
     "bootstrap": "^4.4.1",
     "flow-bin": "^0.121.0",
     "json-server": "^0.16.1",
-    "react-bootstrap": "^1.0.0-beta.17"
+    "react-bootstrap": "^1.0.0-beta.17",
+    "uuid": "^7.0.3"
   }
 }
