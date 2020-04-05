@@ -7,10 +7,8 @@ const FilterReducer = (state, action) => {
       return 'COMPLETED';
     case 'SHOW_INCOMPLETED':
       return 'INCOMPLETED';
-    case '':
-      return state.filter;
     default:
-      throw new Error();
+      throw new Error(`Something went wrong ... (with action: ${action.type} and state: ${state})`);
     }
 };
 

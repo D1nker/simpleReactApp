@@ -79,27 +79,32 @@
     {
       "id": "1",
       "name": "Learn React Basics",
-      "completed": true
+      "completed": true,
+      "editing": false
     },
     {
       "id": "2",
       "name": "Finish React MOOC",
-      "completed": true
+      "completed": true,
+      "editing": false
     },
     {
       "id": "3",
       "name": "React Hooks",
-      "completed": true
+      "completed": true,
+      "editing": false
     },
     {
       "id": "4",
       "name": "React Router",
-      "completed": false
+      "completed": false,
+      "editing": false
     },
     {
       "id": "5",
       "name": "Learn Redux",
-      "completed": false
+      "completed": false,
+      "editing": false
     }
   ],
   "profile": {

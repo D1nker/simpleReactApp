@@ -33,6 +33,7 @@ const MainContent = ({ initialCount = 0 }) => {
         <div>
           <Button
             variant="primary"
+            className="mr-1"
             size="lg"
             onClick={() => setCount(prevCount => prevCount + 1)}
           >
@@ -41,6 +42,7 @@ const MainContent = ({ initialCount = 0 }) => {
 
           <Button
             variant="primary"
+            className="mr-1"
             size="lg"
             onClick={() => setCount(prevCount => prevCount - 1)}
           >
@@ -49,6 +51,7 @@ const MainContent = ({ initialCount = 0 }) => {
 
           <Button
             variant="primary"
+            className="mr-1"
             size="lg"
             onClick={() => setCount(initialCount)}
           >
