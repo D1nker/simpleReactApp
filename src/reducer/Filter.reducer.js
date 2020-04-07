@@ -1,5 +1,5 @@
 
-const FilterReducer = (state, action) => {
+export default function filterReducer(state, action) {
   switch (action.type) {
     case 'SHOW_ALL':
       return 'ALL';
@@ -13,4 +13,3 @@ const FilterReducer = (state, action) => {
 };
 
 
-export default FilterReducer;

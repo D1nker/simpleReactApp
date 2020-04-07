@@ -1,10 +1,11 @@
-const dataFetchReducer = (state, action) => {
+export default function dataFetchReducer(state, action) {
+  console.log(state);
   switch (action.type) {
     case 'FETCH_INIT':
       return {
         ...state,
         isLoading: true,
-        isError: false
+        isError: false,
       };
     case 'FETCH_SUCCESS':
       return {
@@ -24,9 +25,7 @@ const dataFetchReducer = (state, action) => {
       return {
         ...state,
         isLoading: false,
-        isError: true
+        isError: true,
       };
   }
 };
-
-export default dataFetchReducer
