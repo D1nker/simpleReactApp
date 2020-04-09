@@ -1,5 +1,4 @@
 export default function dataFetchReducer(state, action) {
-  console.log(state);
   switch (action.type) {
     case 'FETCH_INIT':
       return {

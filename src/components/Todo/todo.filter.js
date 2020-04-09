@@ -1,4 +1,4 @@
-function filteredTodos(todos, filter) {
+function filterTodos(todos, filter) {
   const data = todos.filter(todo => {
     if ('ALL' === filter) {
       return true;
@@ -14,4 +14,4 @@ function filteredTodos(todos, filter) {
   return data;
 }
 
-export default filteredTodos;
+export default filterTodos;

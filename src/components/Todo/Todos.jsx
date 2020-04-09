@@ -8,20 +8,35 @@ import dataReducer from '../../reducer/data.reducer';
 import todoReducer from '../../reducer/todo.reducer';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_INCOMPLETED } from '../../reducer/filter.constant';
 import { TODOS_URL } from '../../app.constant';
-import todoFilter from './todoFilter';
+import filterTodos from './todo.filter';
 
 const Todos = () => {
-  const initialState = {
+
+  const initialData = {
     isLoading: true,
     isError: false,
     data: [],
   };
-  const [state, dispatch] = useReducer(dataReducer, initialState)
-  const [filter, dispatchFilter] = useReducer(filterReducer, 'ALL');
-  const { data, isLoading, isError } = state;
-  const [todos, dispatchTodos] = useReducer(todoReducer, data);
-  const [focus, setFocus] = useState(false);
 
+  const initialState = {
+    todos: []
+  };
+  // ESTCE QUE JE COMPTE ME RESERVIR DE CE REDUCER
+  // POUR LES AUTRES COMPONENTS ?
+  // Faire "generique" - pattern useReducer/reducer ?
+  // todo cleanup dataAPI after we set todos state
+  // bc we dont need it anymore
+  // and we dont wanna maintain x2 data flow
+  const [dataAPI, dispatch] = useReducer(dataReducer, initialData)
+  const [filter, dispatchFilter] = useReducer(filterReducer, 'ALL');
+  const [state, dispatchTodos] = useReducer(todoReducer, initialState);
+  const { data, isLoading, isError } = dataAPI;
+  const { todos } = state;
+
+  const [focus, setFocus] = useState(false);
+  // const [newTodo, setNewTodo] = useState('');
+
+  // useEffect Data from API
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' })
@@ -40,8 +55,17 @@ const Todos = () => {
   }, []); // second empty array parameter to encure that useEffect is running once
 
 
-  // see ./todoFilter.js
-  const filteredTodos = todoFilter(data, filter);
+  // useEffect todos object
+  useEffect(() => {
+    dispatchTodos({
+      type: 'INIT',
+      payload: data
+    })
+
+  }, [data])
+
+  const filteredTodos = todos.length ? filterTodos(todos, filter) : [];
+
   const handleShowAll = () => dispatchFilter({ type: SHOW_ALL });
   const handleShowCompleted = () => dispatchFilter({ type: SHOW_COMPLETED });
   const handleShowIncompleted = () => dispatchFilter({ type: SHOW_INCOMPLETED });
@@ -50,20 +74,17 @@ const Todos = () => {
 
 
   // const handleCheckboxChange = (id) => {
-  //   setTodos(
-  //     todos.map(todo => {
-  //       if (todo.id !== id) {
-  //         return todo;
-  //       }
-  //       return {...todo, completed: !todo.completed}
-  //     })
-  //   );
+  //   todos.map(todo => {
+  //     if (todo.id !== id) {
+  //       return todo;
+  //     }
+  //     return {...todo, completed: !todo.completed}
+  //   })
   // };
 
   const handleCheckboxChange = todo => {
-    console.log(todo);
     dispatchTodos({
-      type: todo.complete ? 'UNDO_TODO' : 'DO_TODO',
+      type: todo.completed ? 'UNDO_TODO' : 'DO_TODO',
       id: todo.id,
     });
   };
