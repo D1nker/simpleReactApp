@@ -1,12 +1,12 @@
 function filterTodos(todos, filter) {
-  const data = todos.filter(todo => {
-    if ('ALL' === filter) {
+  const data = todos.filter((todo) => {
+    if (filter === 'ALL') {
       return true;
     }
-    if ('COMPLETED' === filter && todo.completed) {
+    if (filter === 'COMPLETED' && todo.completed) {
       return true;
     }
-    if ('INCOMPLETED' === filter && !todo.completed) {
+    if (filter === 'INCOMPLETED' && !todo.completed) {
       return true;
     }
     return false;

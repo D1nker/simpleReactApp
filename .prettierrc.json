@@ -1,0 +1,8 @@
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "prettier/prettier": ["error", {}, {
+    "usePrettierrc": false
+  }]
+}

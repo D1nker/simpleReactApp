@@ -20,13 +20,11 @@ const TodoForm = (props) => {
     <div className="App-todoForm">
       <Form inline onSubmit={handleSubmit}>
         <InputGroup>
-          <FormControl
-            name="task"
-            value={task}
-            onChange={handleInputChange}
-          />
+          <FormControl name="task" value={task} onChange={handleInputChange} />
         </InputGroup>
-        <Button bsstyle="primary" className="ml-2" type="submit">Add</Button>
+        <Button bsstyle="primary" className="ml-2" type="submit">
+          Add
+        </Button>
       </Form>
     </div>
   )

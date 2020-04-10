@@ -77,31 +77,31 @@
   ],
   "todos": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Learn React Basics",
       "completed": true,
       "editing": false
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Finish React MOOC",
       "completed": true,
       "editing": false
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "React Hooks",
       "completed": true,
       "editing": false
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "React Router",
       "completed": false,
       "editing": false
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Learn Redux",
       "completed": false,
       "editing": false

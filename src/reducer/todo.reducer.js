@@ -1,41 +1,61 @@
 export default function todoReducer(state, action) {
-  let todo;
   switch (action.type) {
-    case 'INIT':
+    case 'FETCH_INIT':
       return {
-        todos: action.payload,
+        ...state,
+        isLoading: true
       };
-    case 'DO_TODO':
-     todo = state.todos.map(todo => {
-        if (todo.id === action.id) {
-          return { ...todo, completed: true };
-        } else {
-          return todo;
-        }
-      });
+    case 'FETCH_SUCCESS':
       return {
         ...state,
-        todo,
-      }
-    case 'UNDO_TODO':
-       todo = state.todos.map(todo => {
-        if (todo.id === action.id) {
-          return { ...todo, completed: false };
-        } else {
-          return todo;
-        }
-      });
+        isLoading: false,
+        isError: false,
+        todos: action.payload
+      };
+    case 'FETCH_FAILURE':
       return {
         ...state,
-        todo,
-      }
+        isLoading: false,
+        isError: true
+      };
     case 'ADD_TODO':
-      return state.concat({
-        task: action.task,
-        id: action.id,
-        completed: false,
-      });
+      return {
+        todos: [
+          ...state.todos,
+          {
+            id: state.nextTodoId,
+            name: state.newTodoLabel,
+            completed: false
+          }
+        ],
+        nextTodoId: state.nextTodoId + 1,
+        newTodoLabel: ''
+      };
+    case 'REMOVE_TODO':
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => todo.id !== action.payload)
+      };
+    case 'COMPLETE_TODO':
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload ? { ...todo, completed: true } : todo
+        )
+      };
+    case 'INCOMPLETE_TODO':
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.id === action.payload ? { ...todo, completed: false } : todo
+        )
+      };
+    case 'UPDATE_TODO_LABEL':
+      return {
+        ...state,
+        newTodoLabel: action.payload
+      };
     default:
-      throw new Error();
+      return state;
   }
-};
+}

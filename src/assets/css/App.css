@@ -109,14 +109,15 @@ body {
 }
 
 .App-todos h1 {
+  color: #282c34;
   margin-bottom: 2vh;
 }
 /** --------------------------------------------- **/
 
 
-/** App-todoItem **/
+/** App-todo-item **/
 
-.App-todoItem {
+.App-todo-item {
   line-height: 40px;
   height: auto;
   width: 50vh;
