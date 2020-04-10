@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
+import axios from 'axios';
 import '../../assets/css/App.css';
 import todoReducer from '../../reducer/todo.reducer';
 import { URL, FILTER } from '../../app.constant';
@@ -12,20 +12,20 @@ const Todos = () => {
     isError: false,
     todos: [],
     nextTodoId: 0,
-    newTodoLabel: 'Learn smthing new ?'
+    newTodoLabel: 'Learn smthing new?'
   };
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
   const [filter, dispatchFilter] = useReducer(filterReducer, 'ALL');
   const { todos, newTodoLabel, isLoading, isError } = state;
-
   const [focus, setFocus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
-      await fetch(URL.TODOS_URL)
-        .then((res) => res.json())
+      await axios
+        .get(URL.TODOS)
+        .then((res) => res.data)
         .then((result) =>
           dispatch({
             type: 'FETCH_SUCCESS',
@@ -48,83 +48,111 @@ const Todos = () => {
   // we could've used 1 function to make this work
   // const handleFilterDisplay = (filter) => dispatchFilter({type: filter})
 
+  const handleTodoSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(URL.TODOS, {
+        name: newTodoLabel,
+        completed: false,
+        editing: false
+      })
+      .then((res) => {
+        dispatch({
+          type: 'ADD_TODO',
+          payload: res.data.name
+        });
+      });
+  };
+
+  const handleTodoDelete = (todo) => {
+    // const newTodo = filteredTodos.some((el) => el.id === todo.id);
+    axios.delete(`URL.TODOS/${todo.gid}`).then((res) => console.log(res));
+  };
+
   return (
     <div className="App-todos">
       {isError && <h1>Something went wrong...</h1>}
       {(isLoading && <h1>Loading ...</h1>) || (
         <>
-          <h1>You have {filteredTodos.length} to do today</h1>
-          <div className="App-new-todo">
-            <Form inline>
-              <InputGroup>
-                <FormControl
-                  type="text"
-                  name="task"
-                  value={newTodoLabel}
-                  onChange={({ target }) =>
-                    dispatch({
-                      type: 'UPDATE_TODO_LABEL',
-                      payload: target.value
-                    })
-                  }
-                />
-              </InputGroup>
-              <Button
-                bsstyle="primary"
-                className="ml-2"
-                type="submit"
-                onClick={() => dispatch({ type: 'ADD_TODO' })}
-              >
-                Add
-              </Button>
-            </Form>
+          <div className="App-todo-heading">
+            <h1 className="mt-4">You have {filteredTodos.length} to do today</h1>
           </div>
-
+          <div className="App-new-todo">
+            <form className="form-inline" onSubmit={handleTodoSubmit}>
+              <input
+                className="form-control"
+                type="text"
+                name="todo"
+                value={newTodoLabel}
+                onChange={({ target }) =>
+                  dispatch({
+                    type: 'UPDATE_TODO_LABEL',
+                    payload: target.value
+                  })
+                }
+              />
+              <button className="ml-2 btn btn-primary" type="submit" onClick={(e) => handleTodoSubmit(e)}>
+                Add
+              </button>
+            </form>
+          </div>
           <div className="App-todo-item">
             {filteredTodos.map((todo) => {
               return (
-                <InputGroup className="mb-3" key={todo.id}>
-                  <InputGroup.Prepend>
-                    <InputGroup.Checkbox
-                      checked={todo.completed}
-                      onChange={({ target }) =>
-                        dispatch({
-                          type: target.checked ? 'COMPLETE_TODO' : 'INCOMPLETE_TODO',
-                          payload: todo.id
-                        })
-                      }
+                <div className="mb-3" key={todo.id}>
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">
+                      <input
+                        type="checkbox"
+                        checked={todo.completed}
+                        onChange={({ target }) =>
+                          dispatch({
+                            type: target.checked ? 'COMPLETE_TODO' : 'INCOMPLETE_TODO',
+                            payload: todo.id
+                          })
+                        }
+                      />
+                    </span>
+                    <input
+                      className="form-control"
+                      name={`todo-${todo.id}`}
+                      value={todo.name}
+                      onChange={() => {}} // submit
+                      onFocus={() => setFocus(true)}
+                      // onBlur={() => setFocus(false)}
                     />
-                  </InputGroup.Prepend>
-                  <FormControl
-                    name={`todo-${todo.id}`}
-                    value={todo.name}
-                    onChange={() => {}} // submit
-                    onFocus={() => setFocus(true)}
-                    onBlur={() => setFocus(false)}
-                  />
-                  {focus ? (
-                    <Button className="btn btn-sm ml-2 mr-2" variant="success" type="submit">
-                      Submit
-                    </Button>
-                  ) : null}
-                  {focus ? (
-                    <Button className="btn btn-sm mr-2" variant="danger" type="submit">
-                      Delete
-                    </Button>
-                  ) : null}
-                </InputGroup>
+                    {focus ? (
+                      <button
+                        className="btn btn-sm ml-1 btn btn-success"
+                        type="submit"
+                        onClick={() => handleTodoSubmit(todo)}
+                      >
+                        Submit
+                      </button>
+                    ) : null}
+                    {focus ? (
+                      <button
+                        className="btn btn-sm ml-1 btn btn-danger"
+                        type="submit"
+                        onClick={() => handleTodoDelete(todo)}
+                      >
+                        Delete
+                      </button>
+                    ) : null}
+                  </div>
+                </div>
               );
             })}
             <div className="btn-filter">
-              <Button className="mr-1" onClick={handleShowAll}>
+              <button type="button" className="mr-1 btn btn-primary" onClick={handleShowAll}>
                 Show All
-              </Button>
-              <Button className="mr-1" onClick={handleShowCompleted}>
+              </button>
+              <button type="button" className="mr-1 btn btn-primary" onClick={handleShowCompleted}>
                 Show Complete
-              </Button>
-              <Button className="mr-1" onClick={handleShowIncompleted}>
+              </button>
+              <button type="button" className="mr-1 btn btn-primary" onClick={handleShowIncompleted}>
                 Show Incomplete
-              </Button>
+              </button>
             </div>
           </div>
         </>

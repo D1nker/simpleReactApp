@@ -1,6 +1,6 @@
 import React from 'react';
 import './assets/css/App.css';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 import Discover from './Discover';
 import Header from './components/static/Header';
 import Footer from './components/static/Footer';
@@ -14,7 +14,7 @@ const App = () => {
     <div className="App">
       <Header />
       <Switch>
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={Home} />
         <Route exact path="/discover" component={Discover} />
         <Route path="/discover/count" component={MainContent} />
         <Route path="/discover/todos" component={Todos} />
@@ -23,7 +23,7 @@ const App = () => {
       <Footer />
     </div>
   );
-}
+};
 // take care about `exact`Route attribute that may cause some issue(s)
 // learn more about it here = () => {
 // https://stackoverflow.com/questions/49162311/react-difference-between-route-exact-path-and-route-path

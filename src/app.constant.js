@@ -1,6 +1,6 @@
 export const URL = {
-  TODOS_URL: 'http://localhost:3001/todos',
-  PRODUCTS_URL: 'http://localhost:3001/products'
+  TODOS: 'http://localhost:3001/todos',
+  PRODUCTS: 'http://localhost:3001/products'
 };
 
 export const FILTER = {

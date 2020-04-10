@@ -119,7 +119,7 @@ body {
 
 .App-todo-item {
   line-height: 40px;
-  height: auto;
+  height: 45vh;
   width: 50vh;
   align-items: center;
   padding: 30px 20px 0;
