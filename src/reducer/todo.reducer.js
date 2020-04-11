@@ -25,7 +25,8 @@ export default function todoReducer(state, action) {
           {
             id: state.todos.length + 1,
             name: state.newTodoLabel,
-            completed: false
+            completed: false,
+            editing: false
           }
         ],
         newTodoLabel: ''

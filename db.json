@@ -113,25 +113,7 @@
       "id": 6
     },
     {
-      "name": "Mangoose",
-      "completed": false,
-      "editing": false,
-      "id": 7
-    },
-    {
-      "name": "VueJS ",
-      "completed": false,
-      "editing": false,
-      "id": 8
-    },
-    {
-      "name": "VueX",
-      "completed": false,
-      "editing": false,
-      "id": 9
-    },
-    {
-      "name": "Vue Router ?",
+      "name": "Test 1",
       "completed": false,
       "editing": false,
       "id": 10

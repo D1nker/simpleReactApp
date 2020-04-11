@@ -52,9 +52,7 @@ const Todos = () => {
     event.preventDefault();
     axios
       .post(URL.TODOS, {
-        name: newTodoLabel,
-        completed: false,
-        editing: false
+        name: newTodoLabel
       })
       .then((res) => {
         dispatch({

@@ -1,5 +1,13 @@
 body {
+  background-color: #282c34 !important;
   margin: 0;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+html {
+  height: 100%;
 }
 
 /** App **/
@@ -99,6 +107,7 @@ body {
 .App-todos {
   background-color: white;
   color: whitesmoke;
+  height: 95vh;
   min-height: 70vh;
   display: flex;
   flex-direction: column;
@@ -119,8 +128,7 @@ body {
 
 .App-todo-item {
   line-height: 40px;
-  height: 48vh;
-  width: 50vh;
+  width: 60vh;
   align-items: center;
   padding: 30px 20px 0;
   font-size: 18px;
@@ -154,6 +162,9 @@ body {
   color: white;
   background-color: #282c34;
   padding-top: 1vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .mention {
