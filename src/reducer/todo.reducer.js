@@ -23,12 +23,11 @@ export default function todoReducer(state, action) {
         todos: [
           ...state.todos,
           {
-            id: state.nextTodoId,
+            id: state.todos.length + 1,
             name: state.newTodoLabel,
             completed: false
           }
         ],
-        nextTodoId: state.nextTodoId + 1,
         newTodoLabel: ''
       };
     case 'REMOVE_TODO':
@@ -39,16 +38,12 @@ export default function todoReducer(state, action) {
     case 'COMPLETE_TODO':
       return {
         ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload ? { ...todo, completed: true } : todo
-        )
+        todos: state.todos.map((todo) => (todo.id === action.payload ? { ...todo, completed: true } : todo))
       };
     case 'INCOMPLETE_TODO':
       return {
         ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload ? { ...todo, completed: false } : todo
-        )
+        todos: state.todos.map((todo) => (todo.id === action.payload ? { ...todo, completed: false } : todo))
       };
     case 'UPDATE_TODO_LABEL':
       return {

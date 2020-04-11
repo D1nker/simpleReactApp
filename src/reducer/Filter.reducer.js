@@ -1,4 +1,3 @@
-
 export default function filterReducer(state, action) {
   switch (action.type) {
     case 'SHOW_ALL':
@@ -9,7 +8,5 @@ export default function filterReducer(state, action) {
       return 'INCOMPLETED';
     default:
       throw new Error(`Something went wrong ... (with action: ${action.type} and state: ${state})`);
-    }
-};
-
-
+  }
+}

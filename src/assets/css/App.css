@@ -99,7 +99,7 @@ body {
 .App-todos {
   background-color: white;
   color: whitesmoke;
-  min-height: 50vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,12 +119,13 @@ body {
 
 .App-todo-item {
   line-height: 40px;
-  height: 45vh;
+  height: 48vh;
   width: 50vh;
   align-items: center;
   padding: 30px 20px 0;
   font-size: 18px;
   color: #333333;
+  max-height: inherit;
 }
 
 /** --------------------------------------------- **/

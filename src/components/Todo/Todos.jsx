@@ -11,7 +11,6 @@ const Todos = () => {
     isLoading: true,
     isError: false,
     todos: [],
-    nextTodoId: 0,
     newTodoLabel: 'Learn smthing new?'
   };
 
@@ -49,6 +48,7 @@ const Todos = () => {
   // const handleFilterDisplay = (filter) => dispatchFilter({type: filter})
 
   const handleTodoSubmit = (event) => {
+    // manque la gestion derreur
     event.preventDefault();
     axios
       .post(URL.TODOS, {
@@ -64,9 +64,16 @@ const Todos = () => {
       });
   };
 
+  console.log(state.todos.length);
   const handleTodoDelete = (todo) => {
+    // manque la gestion derreur
     // const newTodo = filteredTodos.some((el) => el.id === todo.id);
-    axios.delete(`URL.TODOS/${todo.gid}`).then((res) => console.log(res));
+    axios.delete(`${URL.TODOS}/${todo.id}`).then(() =>
+      dispatch({
+        type: 'REMOVE_TODO',
+        payload: todo.id
+      })
+    );
   };
 
   return (
