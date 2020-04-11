@@ -1,6 +1,6 @@
 import React from 'react';
 import './assets/css/App.css';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Discover from './Discover';
 import Header from './components/static/Header';
 import Footer from './components/static/Footer';
@@ -12,15 +12,17 @@ import Todos from './components/todo/Todos';
 const App = () => {
   return (
     <div className="App">
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/discover" component={Discover} />
-        <Route path="/discover/count" component={MainContent} />
-        <Route path="/discover/todos" component={Todos} />
-        <Route path="/discover/products" component={Products} />
-      </Switch>
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/discover" component={Discover} />
+          <Route path="/discover/count" component={MainContent} />
+          <Route path="/discover/todos" component={Todos} />
+          <Route path="/discover/products" component={Products} />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 };
