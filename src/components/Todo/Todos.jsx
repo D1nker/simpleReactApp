@@ -64,7 +64,6 @@ const Todos = () => {
       });
   };
 
-  console.log(state.todos.length);
   const handleTodoDelete = (todo) => {
     // manque la gestion derreur
     // const newTodo = filteredTodos.some((el) => el.id === todo.id);
@@ -78,91 +77,94 @@ const Todos = () => {
 
   return (
     <div className="App-todos">
-      {isError && <h1>Something went wrong...</h1>}
-      {(isLoading && <h1>Loading ...</h1>) || (
-        <>
-          <div className="App-todo-heading">
-            <h1 className="mt-4">You have {filteredTodos.length} to do today</h1>
-          </div>
-          <div className="App-new-todo">
-            <form className="form-inline" onSubmit={handleTodoSubmit}>
-              <input
-                className="form-control"
-                type="text"
-                name="todo"
-                value={newTodoLabel}
-                onChange={({ target }) =>
-                  dispatch({
-                    type: 'UPDATE_TODO_LABEL',
-                    payload: target.value
-                  })
-                }
-              />
-              <button className="ml-2 btn btn-primary" type="submit" onClick={(e) => handleTodoSubmit(e)}>
-                Add
-              </button>
-            </form>
-          </div>
-          <div className="App-todo-item">
-            {filteredTodos.map((todo) => {
-              return (
-                <div className="mb-3" key={todo.id}>
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <input
-                        type="checkbox"
-                        checked={todo.completed}
-                        onChange={({ target }) =>
-                          dispatch({
-                            type: target.checked ? 'COMPLETE_TODO' : 'INCOMPLETE_TODO',
-                            payload: todo.id
-                          })
-                        }
-                      />
-                    </span>
-                    <input
-                      className="form-control"
-                      name={`todo-${todo.id}`}
-                      value={todo.name}
-                      onChange={() => {}} // submit
-                      onFocus={() => setFocus(true)}
-                      // onBlur={() => setFocus(false)}
-                    />
-                    {focus ? (
-                      <button
-                        className="btn btn-sm ml-1 btn btn-success"
-                        type="submit"
-                        onClick={() => handleTodoSubmit(todo)}
-                      >
-                        Submit
-                      </button>
-                    ) : null}
-                    {focus ? (
-                      <button
-                        className="btn btn-sm ml-1 btn btn-danger"
-                        type="submit"
-                        onClick={() => handleTodoDelete(todo)}
-                      >
-                        Delete
-                      </button>
-                    ) : null}
-                  </div>
-                </div>
-              );
-            })}
-            <div className="btn-filter">
-              <button type="button" className="mr-1 btn btn-primary" onClick={handleShowAll}>
-                Show All
-              </button>
-              <button type="button" className="mr-1 btn btn-primary" onClick={handleShowCompleted}>
-                Show Complete
-              </button>
-              <button type="button" className="mr-1 btn btn-primary" onClick={handleShowIncompleted}>
-                Show Incomplete
-              </button>
+      {isError ? (
+        <h1>Something went wrong...</h1>
+      ) : (
+        (isLoading && <h1>Loading ...</h1>) || (
+          <>
+            <div className="App-todo-heading">
+              <h1 className="mt-4">You have {filteredTodos.length} to do today</h1>
             </div>
-          </div>
-        </>
+            <div className="App-new-todo">
+              <form className="form-inline" onSubmit={handleTodoSubmit}>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="todo"
+                  value={newTodoLabel}
+                  onChange={({ target }) =>
+                    dispatch({
+                      type: 'UPDATE_TODO_LABEL',
+                      payload: target.value
+                    })
+                  }
+                />
+                <button className="ml-2 btn btn-primary" type="submit" onClick={(e) => handleTodoSubmit(e)}>
+                  Add
+                </button>
+              </form>
+            </div>
+            <div className="App-todo-item">
+              {filteredTodos.map((todo) => {
+                return (
+                  <div className="mb-3" key={todo.id}>
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">
+                        <input
+                          type="checkbox"
+                          checked={todo.completed}
+                          onChange={({ target }) =>
+                            dispatch({
+                              type: target.checked ? 'COMPLETE_TODO' : 'INCOMPLETE_TODO',
+                              payload: todo.id
+                            })
+                          }
+                        />
+                      </span>
+                      <input
+                        className="form-control"
+                        name={`todo-${todo.id}`}
+                        value={todo.name}
+                        onChange={() => {}} // submit
+                        onFocus={() => setFocus(true)}
+                        onBlur={() => setTimeout(() => setFocus(false), 500)}
+                      />
+                      {focus ? (
+                        <button
+                          className="btn btn-sm ml-1 btn btn-success"
+                          type="submit"
+                          onClick={() => handleTodoSubmit(todo)}
+                        >
+                          Submit
+                        </button>
+                      ) : null}
+                      {focus ? (
+                        <button
+                          className="btn btn-sm ml-1 btn btn-danger"
+                          type="submit"
+                          onClick={() => handleTodoDelete(todo)}
+                        >
+                          Delete
+                        </button>
+                      ) : null}
+                    </div>
+                  </div>
+                );
+              })}
+              <div className="btn-filter">
+                <button type="button" className="mr-1 btn btn-primary" onClick={handleShowAll}>
+                  Show All
+                </button>
+                <button type="button" className="mr-1 btn btn-primary" onClick={handleShowCompleted}>
+                  Show Complete
+                </button>
+                <button type="button" className="mr-1 btn btn-primary" onClick={handleShowIncompleted}>
+                  Show Incomplete
+                </button>
+              </div>
+            </div>
+          </>
+        )
       )}
     </div>
   );
