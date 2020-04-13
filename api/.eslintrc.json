@@ -1,26 +1,16 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:prettier/recommended",
-    "prettier/react"
-  ],
   "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "jest": true,
-    "node": true
+      "browser": true,
+      "commonjs": true
   },
+  "extends": "eslint:recommended",
   "rules": {
-    "arrow-parens": "warn",
-    "jsx-a11y/href-no-hash": ["off"],
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "max-len": [
       "warn",
       {
         "code": 110,
         "tabWidth": 2,
-        "comments": 100,
+        "comments": 110,
         "ignoreComments": false,
         "ignoreTrailingComments": true,
         "ignoreUrls": true,
