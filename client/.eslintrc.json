@@ -20,7 +20,7 @@
       {
         "code": 110,
         "tabWidth": 2,
-        "comments": 100,
+        "comments": 110,
         "ignoreComments": false,
         "ignoreTrailingComments": true,
         "ignoreUrls": true,
