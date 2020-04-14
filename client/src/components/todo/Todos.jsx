@@ -23,7 +23,7 @@ const Todos = () => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
       await axios
-        .get(URL.TODOS)
+        .get(URL.GET_TODOS)
         .then((res) => res.data)
         .then((result) =>
           dispatch({
@@ -48,27 +48,26 @@ const Todos = () => {
   // const handleFilterDisplay = (filter) => dispatchFilter({type: filter})
 
   const handleTodoSubmit = (event) => {
-    // manque la gestion derreur
     event.preventDefault();
     axios
-      .post(URL.TODOS, {
-        name: newTodoLabel
-      })
-      .then((res) => {
-        dispatch({
-          type: 'ADD_TODO',
-          payload: res.data.name
-        });
-      });
+      .post(URL.ADD_TODOS, { title: newTodoLabel })
+      .then((res) => dispatch({ type: 'ADD_TODO', title: newTodoLabel, _id: res.data._id }));
+  };
+
+  const handleCheckboxChange = (todo) => {
+    dispatch({
+      type: todo.completed ? 'INCOMPLETE_TODO' : 'COMPLETE_TODO',
+      payload: todo._id
+    });
   };
 
   const handleTodoDelete = (todo) => {
     // manque la gestion derreur
     // const newTodo = filteredTodos.some((el) => el.id === todo.id);
-    axios.delete(`${URL.TODOS}/${todo.id}`).then(() =>
+    axios.delete(`${URL.DELETE_TODOS}${todo._id}`).then(() =>
       dispatch({
         type: 'REMOVE_TODO',
-        payload: todo.id
+        payload: todo._id
       })
     );
   };
@@ -105,24 +104,19 @@ const Todos = () => {
             <div className="App-todo-item">
               {filteredTodos.map((todo) => {
                 return (
-                  <div className="mb-3" key={todo.id}>
+                  <div className="mb-3" key={todo._id}>
                     <div className="input-group-prepend">
                       <span className="input-group-text">
                         <input
                           type="checkbox"
                           checked={todo.completed}
-                          onChange={({ target }) =>
-                            dispatch({
-                              type: target.checked ? 'COMPLETE_TODO' : 'INCOMPLETE_TODO',
-                              payload: todo.id
-                            })
-                          }
+                          onChange={() => handleCheckboxChange(todo)}
                         />
                       </span>
                       <input
                         className="form-control"
-                        name={`todo-${todo.id}`}
-                        value={todo.name}
+                        name="todo"
+                        value={todo.title}
                         onChange={() => {}} // submit
                         onFocus={() => setFocus(true)}
                         onBlur={() => setTimeout(() => setFocus(false), 500)}

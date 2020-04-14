@@ -1,6 +1,9 @@
 export const URL = {
-  TODOS: 'http://localhost:3001/todos',
-  PRODUCTS: 'http://localhost:3001/products'
+  GET_TODOS: 'http://localhost:5000/todos',
+  ADD_TODOS: 'http://localhost:5000/todos/add',
+  UPDATE_TODOS: 'http://localhost:5000/todos/update/',
+  DELETE_TODOS: 'http://localhost:5000/todos/',
+  GET_PRODUCTS: 'http://localhost:5000/products'
 };
 
 export const FILTER = {
