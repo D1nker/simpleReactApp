@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './assets/css/App.css';
+import '../../assets/css/App.css';
 import { FaProductHunt, FaTasks, FaReact } from 'react-icons/fa';
-// import Test from './components/Test';
-// import ShittyForm from './components/ShittyFrom';
 
 const Discover = () => {
   return (

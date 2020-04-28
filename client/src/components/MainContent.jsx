@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/App.css';
 import Button from 'react-bootstrap/Button';
 
-const MainContent = ({ initialCount = 0 }) => {
+const MainContent = () => {
   // Déclaration d'une nouvelle variable d'état, que l'on appellera “count”
   // const value = useState();
   // console.log(value);
+  const initialCount = 0;
   const [count, setCount] = useState(initialCount);
 
   const prevCountRef = useRef();
@@ -56,6 +57,6 @@ const MainContent = ({ initialCount = 0 }) => {
       </main>
     </div>
   );
-}
+};
 
 export default MainContent;

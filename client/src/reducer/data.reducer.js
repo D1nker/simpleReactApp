@@ -4,7 +4,7 @@ export default function dataFetchReducer(state, action) {
       return {
         ...state,
         isLoading: true,
-        isError: false,
+        isError: false
       };
     case 'FETCH_SUCCESS':
       return {
@@ -17,14 +17,13 @@ export default function dataFetchReducer(state, action) {
       return {
         ...state,
         isLoading: false,
-        isError: true,
+        isError: true
       };
     default:
-      // throw new Error('Something went wrong...');
       return {
         ...state,
         isLoading: false,
-        isError: true,
+        isError: true
       };
   }
-};
+}

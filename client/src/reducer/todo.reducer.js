@@ -25,7 +25,6 @@ export default function todoReducer(state, action) {
           {
             title: action.title,
             completed: false,
-            editing: false,
             _id: action._id
           }
         ],

@@ -1,10 +1,9 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import '../../assets/css/App.css';
-import todoReducer from '../../reducer/todo.reducer';
 import { URL, FILTER } from '../../app.constant';
-import filterReducer from '../../reducer/filter.reducer';
-import filterTodos from './todo.filter';
+import todoFilter from './todo.filter';
+import { todoReducer, filterReducer } from '../../reducer';
 
 const Todos = () => {
   const initialState = {
@@ -17,8 +16,9 @@ const Todos = () => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
   const [filter, dispatchFilter] = useReducer(filterReducer, 'ALL');
   const { todos, newTodoLabel, isLoading, isError } = state;
-  const [focus, setFocus] = useState(false);
 
+  // useRef
+  // Suspense
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
@@ -39,7 +39,7 @@ const Todos = () => {
     fetchData();
   }, []); // second empty array parameter to encure that useEffect is running once
 
-  const filteredTodos = filterTodos(todos, filter);
+  const filteredTodos = todoFilter(todos, filter);
 
   const handleShowAll = () => dispatchFilter({ type: FILTER.SHOW_ALL });
   const handleShowCompleted = () => dispatchFilter({ type: FILTER.SHOW_COMPLETED });
@@ -55,14 +55,16 @@ const Todos = () => {
   };
 
   const handleCheckboxChange = (todo) => {
-    dispatch({
-      type: todo.completed ? 'INCOMPLETE_TODO' : 'COMPLETE_TODO',
-      payload: todo._id
+    axios.put(`${URL.UPDATE_TODOS}${todo._id}`, { completed: !todo.completed }).then(() => {
+      dispatch({
+        type: todo.completed ? 'INCOMPLETE_TODO' : 'COMPLETE_TODO',
+        payload: todo._id
+      });
     });
   };
 
   const handleTodoDelete = (todo) => {
-    // manque la gestion derreur
+    // manque la gestion d'erreur
     // const newTodo = filteredTodos.some((el) => el.id === todo.id);
     axios.delete(`${URL.DELETE_TODOS}${todo._id}`).then(() =>
       dispatch({
@@ -113,32 +115,14 @@ const Todos = () => {
                           onChange={() => handleCheckboxChange(todo)}
                         />
                       </span>
-                      <input
-                        className="form-control"
-                        name="todo"
-                        value={todo.title}
-                        onChange={() => {}} // submit
-                        onFocus={() => setFocus(true)}
-                        onBlur={() => setTimeout(() => setFocus(false), 500)}
-                      />
-                      {focus ? (
-                        <button
-                          className="btn btn-sm ml-1 btn btn-success"
-                          type="submit"
-                          onClick={() => handleTodoSubmit(todo)}
-                        >
-                          Submit
-                        </button>
-                      ) : null}
-                      {focus ? (
-                        <button
-                          className="btn btn-sm ml-1 btn btn-danger"
-                          type="submit"
-                          onClick={() => handleTodoDelete(todo)}
-                        >
-                          Delete
-                        </button>
-                      ) : null}
+                      <input className="form-control" name="todo" type="text" defaultValue={todo.title} />
+                      <button
+                        className="btn btn-sm ml-1 btn btn-warning"
+                        type="submit"
+                        onClick={() => handleTodoDelete(todo)}
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 );

@@ -35,17 +35,18 @@ router.route('/:id').delete((req, res) => {
 });
 
 router.route('/update/:id').put((req, res) => {
-  Todo.findById(req.params.id)
-    .then(todo => {
-      todo.title = req.body.title;
+  Todo.findByIdAndUpdate({ _id: req.params.id }, req.body)
+    .then((todo) => {
       todo.completed = req.body.completed;
       todo.date = Date.parse(req.body.date);
 
       todo.save()
-        .then(() => res.json('Todo updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .then(() => res.json('Todo Updated'))
+        .catch(err => res.status(400).json(`Error: + ${err}`))
+      ;
     })
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json(`Error: + ${err}`))
+  ;
 });
 
 module.exports = router;
