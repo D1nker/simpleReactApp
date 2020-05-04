@@ -10,13 +10,9 @@ html {
   height: 100%;
 }
 
-/** App **/
-
 .App {
-  text-align: center;
+  /** empty yet **/
 }
-
-/** --------------------------------------------- **/
 
 /** App-logo **/
 
@@ -43,7 +39,7 @@ html {
 
 /** App-header **/
 
-.App-header, .App-home {
+.App-header {
   background-color: #282c34;
   min-height: 80vh;
   display: flex;
@@ -52,6 +48,15 @@ html {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  height: 50vh;
 }
 
 .App-header nav {
@@ -107,10 +112,10 @@ html {
 .App-todos {
   background-color: white;
   color: whitesmoke;
-  height: 95vh;
-  min-height: 70vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -160,11 +165,7 @@ html {
 
 .App-footer {
   color: white;
-  background-color: #282c34;
-  padding-top: 1vh;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  margin-top: 50px;
 }
 
 .mention {
@@ -174,11 +175,19 @@ html {
 .App-footer li {
   list-style: none;
   display: inline;
-  padding: 2vh;
+  padding: 1.5vh;
+}
+
+.fa-icon {
+  color :white;
+}
+
+.fa-icon:hover, .fa-icon:active {
+  color: #61dafb;
+	transform: scale(1.3);
 }
 
 /** --------------------------------------------- **/
-
 
 .App-discover {
     display: flex;
@@ -196,28 +205,31 @@ html {
     text-align: center;
     margin: 96px;
   }
-  .social_item {
-    display: inline-block;
-    margin: 0 12px;
-  }
-  .social_link {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    text-align: center;
-    transition: 0.5s;
-    border-radius: 50%;
-    overflow: hidden;
-  }
 
-  .social_link:hover {
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  .social_link:active {
-    -webkit-transform: translateY(-1px);
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
+.social_item {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+.social_link {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.5s;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.social_link:hover {
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social_link:active {
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}

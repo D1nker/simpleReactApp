@@ -8,9 +8,17 @@ const Products = React.lazy(() => import('./components/product/Products'));
 const Todos = React.lazy(() => import('./components/todo/Todos'));
 
 const App = () => {
+  const loadingStyle = {
+    color: 'white',
+    border: '3px solid white',
+    margin: '200px auto auto',
+    padding: '10px',
+    width: '50%'
+  };
+
   return (
     <div className="App">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<h1 style={loadingStyle}>Loading...</h1>}>
         <BrowserRouter>
           <Header />
           <Switch>

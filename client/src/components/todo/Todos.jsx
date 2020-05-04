@@ -63,6 +63,7 @@ const Todos = () => {
     });
   };
 
+  // mettre des icones de croix au lieu de btn
   const handleTodoDelete = (todo) => {
     // manque la gestion d'erreur
     // const newTodo = filteredTodos.some((el) => el.id === todo.id);
@@ -77,9 +78,15 @@ const Todos = () => {
   return (
     <div className="App-todos">
       {isError ? (
-        <h1>Something went wrong...</h1>
+        <div className="App-error">
+          <h1>Something went wrong...</h1>
+        </div>
       ) : (
-        (isLoading && <h1>Loading ...</h1>) || (
+        (isLoading && (
+          <div className="App-loading">
+            <h1>Loading ...</h1>
+          </div>
+        )) || (
           <>
             <div className="App-todo-heading">
               <h1 className="mt-4">You have {filteredTodos.length} to do today</h1>
